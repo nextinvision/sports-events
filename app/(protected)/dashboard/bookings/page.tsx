@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuthStore } from '@/store/authStore'
 import { useAuthCheck } from '@/hooks/useAuthCheck'
-import { formatPrice, formatDate, formatDateTime } from '@/lib/utils'
+import { formatPrice, formatDate } from '@/lib/utils'
 import { FiCalendar, FiMapPin, FiClock, FiFileText, FiDownload, FiArrowLeft } from 'react-icons/fi'
 import toast from 'react-hot-toast'
 import Image from 'next/image'
@@ -62,10 +62,10 @@ export default function MyTicketsPage() {
 
       if (response.ok) {
         const orders = await response.json()
-        
+
         // Filter only confirmed/completed orders and flatten to individual tickets
         const bookedTickets: BookedTicket[] = []
-        
+
         orders
           .filter((order: any) => order.status === 'CONFIRMED' || order.status === 'COMPLETED')
           .forEach((order: any) => {
@@ -83,14 +83,14 @@ export default function MyTicketsPage() {
               })
             })
           })
-        
+
         // Sort by event date (upcoming first)
         bookedTickets.sort((a, b) => {
           const dateA = new Date(a.ticket.date).getTime()
           const dateB = new Date(b.ticket.date).getTime()
           return dateA - dateB
         })
-        
+
         setTickets(bookedTickets)
       } else {
         toast.error('Failed to load tickets')
@@ -177,9 +177,8 @@ export default function MyTicketsPage() {
                 return (
                   <div
                     key={ticket.id}
-                    className={`bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg ${
-                      isPast ? 'opacity-75' : ''
-                    }`}
+                    className={`bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg ${isPast ? 'opacity-75' : ''
+                      }`}
                   >
                     {/* Ticket Image */}
                     {ticket.ticket.image && (
