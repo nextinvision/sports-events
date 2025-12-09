@@ -11,6 +11,7 @@ export default function Hero() {
                 priority
             />
             <div className="absolute inset-0 bg-black/20" /> {/* Optional overlay for better text contrast if needed later */}
+            <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-background via-background/60 to-transparent z-20" />
             <div className="w-full relative z-10 flex h-full flex-col justify-center items-end max-[375px]:items-center px-6 md:px-12 text-white">
                 <div className="w-auto text-left max-[375px]:text-center">
                     <h1 className="text-4xl md:text-5xl lg:text-7xl font-medium leading-tight tracking-wide">
