@@ -101,7 +101,7 @@ export default function DashboardPage() {
 
       if (response.ok) {
         const order = await response.json()
-        
+
         // Generate ticket view/download
         const ticketWindow = window.open('', '_blank')
         if (ticketWindow) {
@@ -216,7 +216,7 @@ export default function DashboardPage() {
         {/* Quick Links */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <Link
-            href="/my-tickets"
+            href="/dashboard/bookings"
             className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
           >
             <h3 className="text-lg font-semibold mb-2">My Tickets</h3>
@@ -315,13 +315,12 @@ export default function DashboardPage() {
                     <div className="text-right">
                       <p className="font-bold text-lg">{formatPrice(order.totalAmount)}</p>
                       <span
-                        className={`px-2 py-1 rounded text-xs ${
-                          order.status === 'COMPLETED'
+                        className={`px-2 py-1 rounded text-xs ${order.status === 'COMPLETED'
                             ? 'bg-green-100 text-green-800'
                             : order.status === 'PENDING'
-                            ? 'bg-yellow-100 text-yellow-800'
-                            : 'bg-gray-100 text-gray-800'
-                        }`}
+                              ? 'bg-yellow-100 text-yellow-800'
+                              : 'bg-gray-100 text-gray-800'
+                          }`}
                       >
                         {order.status}
                       </span>

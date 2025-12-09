@@ -145,11 +145,10 @@ export default function AdminTicketsPage() {
                       </td>
                       <td className="py-3 px-4">
                         <span
-                          className={`px-2 py-1 rounded text-xs ${
-                            ticket.category === 'SPORTS'
+                          className={`px-2 py-1 rounded text-xs ${ticket.category === 'SPORTS'
                               ? 'bg-blue-100 text-blue-800'
                               : 'bg-purple-100 text-purple-800'
-                          }`}
+                            }`}
                         >
                           {ticket.category}
                         </span>
@@ -159,9 +158,8 @@ export default function AdminTicketsPage() {
                       </td>
                       <td className="py-3 px-4">
                         <span
-                          className={`${
-                            ticket.available < 10 ? 'text-red-600' : 'text-gray-600'
-                          }`}
+                          className={`${ticket.available < 10 ? 'text-red-600' : 'text-gray-600'
+                            }`}
                         >
                           {ticket.available} / {ticket.quantity}
                         </span>
@@ -172,7 +170,7 @@ export default function AdminTicketsPage() {
                       <td className="py-3 px-4">
                         <div className="flex items-center space-x-2">
                           <Link
-                            href={`/tickets/${ticket.id}`}
+                            href={`/events/${ticket.id}`}
                             className="p-2 text-blue-600 hover:bg-blue-50 rounded"
                             title="View"
                           >

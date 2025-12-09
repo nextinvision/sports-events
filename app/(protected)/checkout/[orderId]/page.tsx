@@ -103,7 +103,7 @@ export default function CheckoutPage() {
 
       if (response.ok) {
         toast.success('Payment successful! Your tickets have been booked.')
-        router.push('/my-tickets')
+        router.push('/dashboard/bookings')
       } else {
         toast.error(data.message || 'Payment failed')
       }
