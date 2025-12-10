@@ -77,7 +77,7 @@ export default function Header() {
   return (
     <header className={cn(
       "fixed top-0 w-full z-50 transition-all duration-300",
-      (isScrolled || mobileMenuOpen) ? "bg-white shadow-md" : "bg-transparent"
+      (isScrolled || mobileMenuOpen) ? "bg-black/20 backdrop-blur-md border-b border-white/10 shadow-lg" : "bg-transparent"
     )}>
       <div className="container mx-auto px-4 py-4">
 
@@ -90,9 +90,7 @@ export default function Header() {
                   <NavigationMenuLink asChild className={cn(
                     navigationMenuTriggerStyle(),
                     "!bg-transparent hover:!bg-transparent focus:!bg-transparent data-[active]:!bg-transparent data-[state=open]:!bg-transparent",
-                    (isScrolled || mobileMenuOpen)
-                      ? "text-black hover:text-black focus:text-black"
-                      : "text-white hover:text-white focus:text-white data-[state=open]:text-white data-[active]:text-white"
+                    "text-white hover:text-white/80 focus:text-white data-[state=open]:text-white data-[active]:text-white"
                   )}>
                     <Link href="/">
                       Home
@@ -103,9 +101,7 @@ export default function Header() {
                   <NavigationMenuItem key={section.title}>
                     <NavigationMenuTrigger className={cn(
                       "!bg-transparent hover:!bg-transparent focus:!bg-transparent data-[active]:!bg-transparent data-[state=open]:!bg-transparent",
-                      (isScrolled || mobileMenuOpen)
-                        ? "text-black hover:text-black focus:text-black"
-                        : "text-white hover:text-white focus:text-white data-[state=open]:text-white data-[active]:text-white"
+                      "text-white hover:text-white/80 focus:text-white data-[state=open]:text-white data-[active]:text-white"
                     )}>
                       {section.title}
                     </NavigationMenuTrigger>
@@ -129,75 +125,16 @@ export default function Header() {
             </NavigationMenu>
           </div>
 
-          {/* User Actions */}
+          {/* User Actions - DISABLED */}
           <div className="hidden md:flex items-center space-x-4">
-            {isAuthenticated ? (
-              <DropdownMenu modal={false}>
-                <DropdownMenuTrigger className={cn(
-                  "flex items-center space-x-2 transition-colors outline-none cursor-pointer",
-                  (isScrolled || mobileMenuOpen) ? "text-black hover:text-indigo-600" : "text-white hover:text-white"
-                )}>
-                  <FiUser />
-                  <span>{user?.name}</span>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="bg-white text-black border-gray-200">
-                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                  <DropdownMenuSeparator className="bg-gray-200" />
-                  {user?.role === 'ADMIN' && (
-                    <DropdownMenuItem asChild className="focus:bg-gray-100 focus:text-black">
-                      <Link href="/admin" className="cursor-pointer text-black hover:text-black">
-                        Admin Dashboard
-                      </Link>
-                    </DropdownMenuItem>
-                  )}
-                  <DropdownMenuItem asChild className="focus:bg-gray-100 focus:text-black">
-                    <Link href="/dashboard" className="cursor-pointer text-black hover:text-black">
-                      Dashboard
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild className="focus:bg-gray-100 focus:text-black">
-                    <Link href="/dashboard/bookings" className="cursor-pointer text-black hover:text-black">
-                      My Tickets
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator className="bg-gray-200" />
-                  <DropdownMenuItem onClick={handleLogout} className="cursor-pointer text-red-600 hover:text-red-700 focus:bg-gray-100 focus:text-red-600">
-                    <FiLogOut className="mr-2" />
-                    Logout
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            ) : (
-              <>
-                <Link
-                  href="/auth/login"
-                  className={cn(
-                    "text-sm font-medium transition-colors",
-                    (isScrolled || mobileMenuOpen) ? "text-black hover:text-black/70" : "text-white hover:text-white/80"
-                  )}
-                >
-                  Login
-                </Link>
-                <Link
-                  href="/auth/register"
-                  className={cn(
-                    "flex items-center justify-center h-9 px-4 rounded-full text-sm font-medium transition-all duration-300",
-                    (isScrolled || mobileMenuOpen)
-                      ? "text-black hover:bg-black hover:text-white"
-                      : "bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 shadow-lg"
-                  )}
-                >
-                  Sign Up
-                </Link>
-              </>
-            )}
+            {/* Login and Signup buttons removed as per request */}
           </div>
 
           {/* Mobile Menu Button */}
           <button
             className={cn(
               "md:hidden",
-              (isScrolled || mobileMenuOpen) ? "text-gray-700" : "text-white"
+              "text-white"
             )}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
@@ -207,23 +144,23 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t pt-4 h-[calc(100vh-5rem)] overflow-y-auto">
+          <div className="md:hidden mt-4 pb-4 border-t border-white/10 pt-4 h-[calc(100vh-5rem)] overflow-y-auto bg-black/90 backdrop-blur-md">
             <nav className="flex flex-col space-y-4">
               <Link
                 href="/"
-                className="font-semibold text-gray-900"
+                className="font-semibold text-white"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Home
               </Link>
               {navItems.map((section) => (
                 <div key={section.title} className="flex flex-col space-y-2">
-                  <span className="font-semibold text-gray-900">{section.title}</span>
+                  <span className="font-semibold text-white">{section.title}</span>
                   {section.items.map((item) => (
                     <Link
                       key={item.title}
                       href={item.href}
-                      className="text-gray-700 pl-4"
+                      className="text-gray-300 pl-4"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.title}
@@ -231,59 +168,7 @@ export default function Header() {
                   ))}
                 </div>
               ))}
-              {isAuthenticated ? (
-                <>
-                  {user?.role === 'ADMIN' && (
-                    <Link
-                      href="/admin"
-                      className="text-gray-700"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Admin
-                    </Link>
-                  )}
-                  <Link
-                    href="/dashboard/bookings"
-                    className="text-gray-700"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    My Tickets
-                  </Link>
-                  <Link
-                    href="/dashboard"
-                    className="text-gray-700"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Dashboard
-                  </Link>
-                  <button
-                    onClick={() => {
-                      handleLogout()
-                      setMobileMenuOpen(false)
-                    }}
-                    className="text-left text-gray-700"
-                  >
-                    Logout
-                  </button>
-                </>
-              ) : (
-                <>
-                  <Link
-                    href="/login"
-                    className="text-gray-700"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Login
-                  </Link>
-                  <Link
-                    href="/auth/register"
-                    className="text-gray-700 font-semibold"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Sign Up
-                  </Link>
-                </>
-              )}
+              {/* Authentication links removed from mobile menu */}
             </nav>
           </div>
         )}
