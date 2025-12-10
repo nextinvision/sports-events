@@ -1,6 +1,5 @@
 import Hero from '@/components/Hero'
 import WhatWeOffer from '@/components/WhatWeOffer'
-import ContactSection from '@/components/ContactSection'
 import ExploreSportsSection from '@/components/ExploreSportsSection'
 import ExploreEventsSection from '@/components/ExploreEventsSection'
 import NewsSection from '@/components/NewsSection'
@@ -13,7 +12,6 @@ export default function Home() {
       <ExploreEventsSection />
       <WhatWeOffer />
       <NewsSection />
-      <ContactSection />
     </div>
   )
 }

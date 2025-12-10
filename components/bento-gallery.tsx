@@ -8,7 +8,7 @@ import {
   Variants,
 } from "framer-motion"
 import { cn } from "@/lib/utils"
-import { ArrowLeft, ArrowRight } from "lucide-react"
+
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
@@ -36,17 +36,7 @@ const InteractiveImageBentoGallery: React.FC<
   const targetRef = useRef<HTMLDivElement>(null)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
 
-  const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: -300, behavior: "smooth" })
-    }
-  }
 
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" })
-    }
-  }
 
   // Framer Motion scroll animations
   const { scrollYProgress } = useScroll({
@@ -74,14 +64,7 @@ const InteractiveImageBentoGallery: React.FC<
       </motion.div>
 
       <div className="relative container mx-auto px-4 mt-2">
-        <Button
-          variant="outline"
-          size="icon"
-          className="absolute left-2 top-1/2 -translate-y-1/2 z-30 h-8 w-8 rounded-full bg-background/80 backdrop-blur-sm cursor-pointer"
-          onClick={scrollLeft}
-        >
-          <ArrowLeft className="h-4 w-4" />
-        </Button>
+
 
         <div
           ref={scrollContainerRef}
@@ -119,14 +102,7 @@ const InteractiveImageBentoGallery: React.FC<
           </motion.div>
         </div>
 
-        <Button
-          variant="outline"
-          size="icon"
-          className="absolute right-2 top-1/2 -translate-y-1/2 z-30 h-8 w-8 rounded-full bg-background/80 backdrop-blur-sm cursor-pointer"
-          onClick={scrollRight}
-        >
-          <ArrowRight className="h-4 w-4" />
-        </Button>
+
       </div>
     </section>
   )
