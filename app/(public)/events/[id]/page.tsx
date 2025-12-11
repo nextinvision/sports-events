@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
+import EventJourneyLine from '@/components/EventJourneyLine'
 
 const MOCK_EVENTS: Record<string, any> = {
   "507f1f77bcf86cd799439011": {
@@ -102,12 +103,13 @@ export default async function TicketDetailPage({
   const ticket = await getTicket(id)
 
   return (
-    <div className="min-h-screen bg-[#11212D] text-white font-sans pt-24">
+    <div className="min-h-screen bg-[#11212D] text-white font-sans pt-24 relative z-30">
+      <EventJourneyLine />
       {/* Main Content Container */}
       <div className="container mx-auto px-4 py-8 max-w-5xl">
 
         {/* Hero Section */}
-        <div className="relative w-full h-[400px] rounded-t-lg overflow-hidden">
+        <div className="relative w-full h-[400px] rounded-t-lg overflow-hidden z-20">
           <Image
             src={ticket.image}
             alt={ticket.title}
