@@ -22,6 +22,40 @@ export default function ExploreEventsSection() {
                     subtitle=""
                     images={eventImages}
                 />
+
+                {/* More Events Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+                    {[1, 2, 3, 4].map((item) => (
+                        <div key={item} className="bg-white rounded-3xl overflow-hidden shadow-lg group cursor-pointer hover:-translate-y-1 transition-transform duration-300">
+                            {/* Image Container */}
+                            <div className="relative h-48 overflow-hidden">
+                                <img
+                                    src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1080&auto=format&fit=crop"
+                                    alt="Tennis Event"
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                />
+                            </div>
+
+                            {/* Content Container */}
+                            <div className="p-6 relative">
+                                {/* Date Badge */}
+                                <div className="absolute -top-8 left-6 flex flex-col items-center rounded-lg overflow-hidden shadow-md">
+                                    <div className="bg-[#2A9D8F] text-white text-xs font-bold px-3 py-1 uppercase tracking-wider">
+                                        Dec
+                                    </div>
+                                    <div className="bg-white text-black text-xl font-bold px-3 py-2 w-full text-center">
+                                        12
+                                    </div>
+                                </div>
+
+                                <h3 className="text-black text-lg font-medium mb-3 mt-2 text-center">City Lights in New York</h3>
+                                <p className="text-gray-500 text-[10px] leading-relaxed text-left">
+                                    Tennis match held in New York, there was a clash between two teams, both teams won the match I mean it was a draw, they both are happy and living their life in peace.
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     )
