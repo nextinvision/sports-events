@@ -38,4 +38,3 @@ export async function comparePassword(
 ): Promise<boolean> {
   return bcrypt.compare(password, hashedPassword)
 }
-

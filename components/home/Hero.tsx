@@ -1,9 +1,9 @@
 'use client'
 
 import Image from 'next/image'
-import heroImage from '@/public/freepik__35mm-film-photography-legend-player-emerging-from-__53997 1.jpg'
+import heroImage from '@/public/images/freepik__35mm-film-photography-legend-player-emerging-from-__53997 1.jpg'
 import { motion } from 'framer-motion'
-import BlurText from './BlurText'
+import BlurText from '@/components/ui/BlurText'
 
 export default function Hero() {
     return (

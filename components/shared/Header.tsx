@@ -5,9 +5,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useAuthStore } from '@/store/authStore'
-import { FiUser, FiLogOut, FiMenu, FiX } from 'react-icons/fi'
+import { FiMenu, FiX } from 'react-icons/fi'
 import { Trophy, Music, Calendar, Newspaper, Briefcase, FileText, Mic, Activity, Home } from 'lucide-react'
 import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -17,18 +18,11 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navbar"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+
 
 const navItems = [
   {
-    title: "Sports",
+    title: "Experiences",
     items: [
       { title: "Football", href: "/experiences/football", icon: Trophy, description: "Latest football matches and news." },
       { title: "Basketball", href: "/experiences/basketball", icon: Activity, description: "NBA and local basketball events." },
@@ -38,7 +32,7 @@ const navItems = [
     ]
   },
   {
-    title: "Events",
+    title: "Event Organisers",
     items: [
       { title: "Concerts", href: "#", icon: Music, description: "Live music performances." },
       { title: "Festivals", href: "#", icon: Calendar, description: "Cultural and music festivals." },
@@ -58,11 +52,16 @@ const navItems = [
 
 export default function Header() {
   const pathname = usePathname()
-  const { user, isAuthenticated, logout } = useAuthStore()
+  const { user, isAuthenticated: storeAuth, logout } = useAuthStore()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [hasMounted, setHasMounted] = useState(false)
+
+  // Avoid hydration mismatch by only using the store auth state after mount
+  const isAuthenticated = hasMounted ? storeAuth : false
 
   useEffect(() => {
+    setHasMounted(true)
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0)
     }
@@ -86,7 +85,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
             <Image
-              src="/logo.png"
+              src="/images/logo.png"
               alt="Viagosport Logo"
               width={280}
               height={120}
@@ -139,6 +138,32 @@ export default function Header() {
               </NavigationMenu>
             </div>
 
+            {/* Desktop Auth Buttons */}
+            {/* <div className="hidden md:flex items-center gap-4">
+              {isAuthenticated ? (
+                <Button
+                  onClick={handleLogout}
+                  variant="ghost"
+                  className="text-white hover:text-white hover:bg-white/10"
+                >
+                  Logout
+                </Button>
+              ) : (
+                <>
+                  <Link href="/auth/login">
+                    <Button variant="ghost" className="text-white hover:text-white hover:bg-white/10">
+                      Log In
+                    </Button>
+                  </Link>
+                  <Link href="/auth/register">
+                    <Button className="bg-white text-black hover:bg-white/90">
+                      Sign Up
+                    </Button>
+                  </Link>
+                </>
+              )}
+            </div> */}
+
 
             {/* Mobile Menu Button */}
             <button
@@ -183,6 +208,30 @@ export default function Header() {
                 </div>
               ))}
             </nav>
+            {/* <div className="mt-8 flex flex-col gap-4">
+              {isAuthenticated ? (
+                <Button
+                  onClick={handleLogout}
+                  variant="outline"
+                  className="w-full justify-center text-white border-white/20 hover:bg-white/10 hover:text-white"
+                >
+                  Logout
+                </Button>
+              ) : (
+                <>
+                  <Link href="/auth/login" onClick={() => setMobileMenuOpen(false)}>
+                    <Button variant="ghost" className="w-full justify-start text-white hover:text-white hover:bg-white/10">
+                      Log In
+                    </Button>
+                  </Link>
+                  <Link href="/auth/register" onClick={() => setMobileMenuOpen(false)}>
+                    <Button className="w-full bg-white text-black hover:bg-white/90">
+                      Sign Up
+                    </Button>
+                  </Link>
+                </>
+              )}
+            </div> */}
           </div>
         </div>
       )}

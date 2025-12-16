@@ -9,26 +9,26 @@ import AuthGuard from "@/components/shared/AuthGuard";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "Dashboard - TicketHub",
-    description: "Manage your tickets and account.",
+    title: "Admin Dashboard - Turnkey",
+    description: "Admin dashboard for Turnkey sports events platform.",
 };
 
-export default function ProtectedLayout({
+export default function AdminLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            <body className={`${inter.className} flex flex-col min-h-screen`}>
-                {/* <AuthGuard> */}
+        <html lang="en" suppressHydrationWarning>
+            <body className={`${inter.className} min-h-screen bg-[#11212D] text-white`}>
+                {/* <AuthGuard>
+                </AuthGuard> */}
                 <Header />
-                <main className="flex-grow">
+                <main className="min-h-screen">
                     {children}
                 </main>
                 <Footer />
                 <Toaster />
-                {/* </AuthGuard> */}
             </body>
         </html>
     );

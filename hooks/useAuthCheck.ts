@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuthStore } from '@/store/authStore'
 
-export function useAuthCheck(redirectTo: string = '/login', requireAdmin: boolean = false) {
+export function useAuthCheck(redirectTo: string = '/auth/login', requireAdmin: boolean = false) {
   const router = useRouter()
   const { isAuthenticated, token, user, _hasHydrated } = useAuthStore()
   const [isChecking, setIsChecking] = useState(true)

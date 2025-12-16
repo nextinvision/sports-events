@@ -1,9 +1,9 @@
-import Hero from '@/components/Hero'
-import JourneyLine from '@/components/JourneyLine'
-import WhatWeOffer from '@/components/WhatWeOffer'
-import ExploreSportsSection from '@/components/ExploreSportsSection'
-import ExploreEventsSection from '@/components/ExploreEventsSection'
-import NewsSection from '@/components/NewsSection'
+import Hero from '@/components/home/Hero'
+import JourneyLine from '@/components/home/JourneyLine'
+import WhatWeOffer from '@/components/home/WhatWeOffer'
+import ExploreSportsSection from '@/components/home/ExploreSportsSection'
+import ExploreEventsSection from '@/components/home/ExploreEventsSection'
+import NewsSection from '@/components/home/NewsSection'
 
 export default function Home() {
   return (
