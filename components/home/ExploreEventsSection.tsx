@@ -1,5 +1,5 @@
 import React from 'react'
-import { HeroSection } from '@/components/ExploreEventsCarousel'
+import { HeroSection } from './ExploreEventsCarousel'
 
 export default function ExploreEventsSection() {
     const eventImages = [

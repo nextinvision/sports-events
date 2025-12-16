@@ -1,8 +1,8 @@
 import React from 'react'
 import { ArrowUpDown, Filter } from 'lucide-react'
-import SportHero from '../../../../components/SportHero'
-import SportEventCard from '@/components/SportEventCard'
-import EventJourneyLine from '@/components/EventJourneyLine'
+import SportHero from '@/components/experiences/SportHero'
+import SportEventCard from '@/components/events/SportEventCard'
+import EventJourneyLine from '@/components/events/EventJourneyLine'
 
 // Mock data generator based on sport
 const getSportData = (sport: string) => {

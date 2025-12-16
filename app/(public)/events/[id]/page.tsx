@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
-import EventJourneyLine from '@/components/EventJourneyLine'
+import EventJourneyLine from '@/components/events/EventJourneyLine'
 
 const MOCK_EVENTS: Record<string, any> = {
   "507f1f77bcf86cd799439011": {

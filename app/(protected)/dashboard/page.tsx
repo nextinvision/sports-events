@@ -33,7 +33,7 @@ interface Order {
 export default function DashboardPage() {
   const router = useRouter()
   const { user, token } = useAuthStore()
-  const { isChecking } = useAuthCheck()
+  // const { isChecking } = useAuthCheck()
   const [orders, setOrders] = useState<Order[]>([])
   const [loading, setLoading] = useState(true)
   const [stats, setStats] = useState({
@@ -44,11 +44,11 @@ export default function DashboardPage() {
   })
 
   useEffect(() => {
-    if (!isChecking && token) {
-      fetchOrders()
-      fetchStats()
-    }
-  }, [isChecking, token])
+    fetchOrders()
+    fetchStats()
+    // if (!isChecking && token) {
+    // }
+  }, [token]) //isChecking will also be added to the array later on
 
   const fetchOrders = async () => {
     try {
@@ -185,13 +185,13 @@ export default function DashboardPage() {
     }
   }
 
-  if (isChecking || !user) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <p className="text-gray-500">Loading...</p>
-      </div>
-    )
-  }
+  // if (isChecking || !user) {
+  //   return (
+  //     <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+  //       <p className="text-gray-500">Loading...</p>
+  //     </div>
+  //   )
+  // }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -200,7 +200,7 @@ export default function DashboardPage() {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold mb-2">Dashboard</h1>
-              <p className="text-gray-600">Welcome back, {user.name}!</p>
+              <p className="text-gray-600">Welcome back, {user?.name}!</p>
             </div>
             <div className="flex items-center space-x-4">
               <Link
@@ -309,10 +309,10 @@ export default function DashboardPage() {
                       <p className="font-bold text-lg">{formatPrice(order.totalAmount)}</p>
                       <span
                         className={`px-2 py-1 rounded text-xs ${order.status === 'COMPLETED'
-                            ? 'bg-green-100 text-green-800'
-                            : order.status === 'PENDING'
-                              ? 'bg-yellow-100 text-yellow-800'
-                              : 'bg-gray-100 text-gray-800'
+                          ? 'bg-green-100 text-green-800'
+                          : order.status === 'PENDING'
+                            ? 'bg-yellow-100 text-yellow-800'
+                            : 'bg-gray-100 text-gray-800'
                           }`}
                       >
                         {order.status}

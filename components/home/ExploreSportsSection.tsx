@@ -48,46 +48,6 @@ const sportsItems = [
         url: "https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&q=80&w=1080",
         span: "row-span-2",
     },
-    {
-        id: 11,
-        title: "Demo Sport 1",
-        desc: "Testing layout flow.",
-        url: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=1080",
-        span: "md:col-span-1",
-        href: "/#",
-    },
-    {
-        id: 12,
-        title: "Demo Sport 2",
-        desc: "Testing vertical span.",
-        url: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&q=80&w=1080",
-        span: "row-span-2",
-        href: "/#",
-    },
-    {
-        id: 13,
-        title: "Demo Sport 3",
-        desc: "Testing horizontal span.",
-        url: "https://images.unsplash.com/photo-1526676037777-05a232554f77?auto=format&fit=crop&q=80&w=1080",
-        span: "md:col-span-2",
-        href: "/#",
-    },
-    {
-        id: 14,
-        title: "Demo Sport 4",
-        desc: "Testing standard card.",
-        url: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?auto=format&fit=crop&q=80&w=1080",
-        span: "md:col-span-1",
-        href: "/#",
-    },
-    {
-        id: 15,
-        title: "Demo Sport 5",
-        desc: "Testing filler card.",
-        url: "https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&q=80&w=1080",
-        span: "row-span-1",
-        href: "/#",
-    },
 ]
 
 export default function ExploreSportsSection() {
@@ -97,7 +57,7 @@ export default function ExploreSportsSection() {
     const scroll = (direction: 'left' | 'right') => {
         if (containerRef.current) {
             const containerWidth = containerRef.current.clientWidth;
-            const contentWidth = 1280; // Fixed width of the inner content
+            const contentWidth = 1280;
             const maxOffset = Math.max(0, contentWidth - containerWidth);
             const scrollAmount = 300;
 
