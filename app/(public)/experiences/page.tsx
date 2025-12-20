@@ -72,10 +72,10 @@ export default function ExperiencesPage() {
                     alt="Stadium"
                     fill
                     priority
-                    className="object-cover"
+                    className="object-cover opacity-60"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black" />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black" />
 
                 <div className="relative z-10 flex min-h-screen items-center px-10 md:px-20 max-w-3xl">
                     <p className="text-sm text-gray-300 leading-relaxed">
