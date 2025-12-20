@@ -69,11 +69,11 @@ export default async function SportPage({ params }: { params: Promise<{ sport: s
                 </div>
                 <div className="w-full">
                     <TrendingTournamentsCarousel items={[
-                        { name: `Global ${sport} Cup`, src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&q=80&w=800" },
-                        { name: `National ${sport} League`, src: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&q=80&w=800" },
-                        { name: `${sport} World Championship`, src: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?auto=format&fit=crop&q=80&w=800" },
-                        { name: `Regional ${sport} Finals`, src: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&q=80&w=800" },
-                        { name: `Pro ${sport} Series`, src: "https://images.unsplash.com/photo-1624880357913-a8539238245b?auto=format&fit=crop&q=80&w=800" },
+                        { name: `Global ${sport} Cup`, src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&q=80&w=800", link: `/experiences/${sport}/global-cup` },
+                        { name: `National ${sport} League`, src: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&q=80&w=800", link: `/experiences/${sport}/national-league` },
+                        { name: `${sport} World Championship`, src: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?auto=format&fit=crop&q=80&w=800", link: `/experiences/${sport}/world-championship` },
+                        { name: `Regional ${sport} Finals`, src: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&q=80&w=800", link: `/experiences/${sport}/regional-finals` },
+                        { name: `Pro ${sport} Series`, src: "https://images.unsplash.com/photo-1624880357913-a8539238245b?auto=format&fit=crop&q=80&w=800", link: `/experiences/${sport}/pro-series` },
                     ]} />
                 </div>
             </div>

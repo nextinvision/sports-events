@@ -35,7 +35,7 @@ export default function Header() {
 
   return (
     <header className={cn(
-      "fixed top-0 w-full z-50 transition-all duration-300",
+      "fixed top-0 w-full z-[100] transition-all duration-300",
       (isScrolled || mobileMenuOpen) ? "bg-black/90 backdrop-blur-md border-b border-white/10 shadow-lg" : "bg-transparent"
     )}>
       <div className="container mx-auto px-4 min-[425px]:px-12 py-2">
@@ -86,27 +86,13 @@ export default function Header() {
                   </div>
                 </div>
               </div>
-              {/* Athlete Dropdown */}
-              <div className="group relative h-full flex items-center">
-                <Link
-                  href="/athlete"
-                  className="text-white hover:text-white/80 font-normal text-sm transition-colors py-4 inline-block"
-                >
-                  Athlete
-                </Link>
-
-                {/* Dropdown Menu */}
-                <div className="absolute top-full left-0 pt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left z-50">
-                  <div className="bg-black/95 backdrop-blur-md border border-white/10 rounded-lg shadow-xl overflow-hidden flex flex-col py-2">
-                    <Link href="/atheletes/professional" className="px-4 py-2 text-sm text-gray-300 hover:text-[#D4AF37] hover:bg-white/5 transition-colors">
-                      Professional
-                    </Link>
-                    <Link href="/atheletes/recreational" className="px-4 py-2 text-sm text-gray-300 hover:text-[#D4AF37] hover:bg-white/5 transition-colors">
-                      Recreational
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              {/* Athlete Link - No Dropdown */}
+              <Link
+                href="/atheletes"
+                className="text-white hover:text-white/80 font-normal text-sm transition-colors"
+              >
+                Athlete
+              </Link>
               <Link
                 href="/events"
                 className="text-white hover:text-white/80 font-normal text-sm transition-colors"
@@ -195,31 +181,13 @@ export default function Header() {
                     </Link>
                   </div>
                 </div>
-                <div className="flex flex-col gap-4">
-                  <Link
-                    href="/athlete"
-                    className="text-lg font-semibold text-white"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Athlete
-                  </Link>
-                  <div className="flex flex-col pl-4 gap-3 border-l border-white/20 ml-2">
-                    <Link
-                      href="/atheletes/professional"
-                      className="text-sm text-gray-300 hover:text-[#D4AF37]"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Professional
-                    </Link>
-                    <Link
-                      href="/atheletes/recreational"
-                      className="text-sm text-gray-300 hover:text-[#D4AF37]"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Recreational
-                    </Link>
-                  </div>
-                </div>
+                <Link
+                  href="/atheletes"
+                  className="text-lg font-semibold text-white"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Athlete
+                </Link>
                 <Link
                   href="/events"
                   className="text-lg font-semibold text-white"

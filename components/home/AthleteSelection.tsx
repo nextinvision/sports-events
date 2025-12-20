@@ -6,9 +6,10 @@ interface AthleteSelectionProps {
     activeType?: 'professional' | 'recreational';
     variant?: 'default' | 'static';
     showLabels?: boolean;
+    onTypeSelect?: (type: 'professional' | 'recreational') => void;
 }
 
-export default function AthleteSelection({ activeType, variant = 'default', showLabels = false }: AthleteSelectionProps) {
+export default function AthleteSelection({ activeType, variant = 'default', showLabels = false, onTypeSelect }: AthleteSelectionProps) {
     const isProfessionalActive = activeType === 'professional';
     const isRecreationalActive = activeType === 'recreational';
     const isStatic = variant === 'static';
@@ -16,9 +17,9 @@ export default function AthleteSelection({ activeType, variant = 'default', show
 
     const CardContent = ({ type, isActive }: { type: 'professional' | 'recreational', isActive: boolean }) => (
         <>
-            <div className={`relative w-full h-[300px] md:h-[500px] transition-all duration-1000 ease-out rounded-3xl ${isActive ? 'shadow-[0_0_150px_rgba(212,175,55,0.2)]' : (isStatic ? '' : 'group-hover:shadow-[0_0_150px_rgba(212,175,55,0.2)]')}`}>
+            <div className={`relative w-full h-[300px] md:h-[500px] transition-all duration-1000 ease-out rounded-3xl ${isActive ? 'shadow-[0_0_150px_rgba(212,175,55,0.2)]' : (isStatic && !onTypeSelect ? '' : 'group-hover:shadow-[0_0_150px_rgba(212,175,55,0.2)]')}`}>
                 {/* Card Background / Blur Effect */}
-                <div className={`absolute -inset-8 bg-gradient-to-r from-[#D4AF37] to-[#AA8C2C] rounded-[3rem] blur-2xl transition duration-1000 ${isActive ? 'opacity-15' : (isStatic ? 'opacity-0' : 'opacity-0 group-hover:opacity-15')}`}></div>
+                <div className={`absolute -inset-8 bg-gradient-to-r from-[#D4AF37] to-[#AA8C2C] rounded-[3rem] blur-2xl transition duration-1000 ${isActive ? 'opacity-15' : (isStatic && !onTypeSelect ? 'opacity-0' : 'opacity-0 group-hover:opacity-15')}`}></div>
 
                 <div className="relative w-full h-full overflow-hidden [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%),radial-gradient(circle,black_60%,transparent_100%)] webkit-mask-image-radial">
                     {/* Using a radical gradient mask to blur the edges */}
@@ -30,7 +31,7 @@ export default function AthleteSelection({ activeType, variant = 'default', show
                             }
                             alt={`${type === 'professional' ? 'Professional' : 'Recreational'} Athlete`}
                             fill
-                            className={`object-cover transition-all duration-1000 ${isActive ? 'grayscale-0' : (isStatic ? 'grayscale' : 'grayscale group-hover:grayscale-0')}`}
+                            className={`object-cover transition-all duration-1000 ${isActive ? 'grayscale-0' : (isStatic && !onTypeSelect ? 'grayscale' : 'grayscale group-hover:grayscale-0')}`}
                         />
                     </div>
                 </div>
@@ -44,7 +45,7 @@ export default function AthleteSelection({ activeType, variant = 'default', show
     );
 
     return (
-        <section className={`${isStatic ? 'pt-36 pb-0' : 'py-16'} bg-black text-white relative`}>
+        <section className={`${isStatic ? 'pt-36 pb-0' : 'py-16'} bg-black text-white relative overflow-x-hidden`}>
             <div className="container mx-auto px-4 min-[425px]:px-12 relative z-20">
                 {/* Heading */}
                 {!isStatic && (
@@ -55,28 +56,40 @@ export default function AthleteSelection({ activeType, variant = 'default', show
                 )}
 
                 {/* Content */}
-                <div className="flex flex-col md:flex-row justify-between items-start gap-12 md:gap-24 w-full">
+                <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-12 md:gap-24 w-full">
 
                     {/* Professional */}
-                    {isStatic ? (
-                        <div className="flex flex-col items-center w-full md:flex-1 max-w-2xl">
+                    {onTypeSelect ? (
+                        <div onClick={() => onTypeSelect('professional')} className="group cursor-pointer flex flex-col items-center w-full md:flex-1 max-w-2xl">
                             <CardContent type="professional" isActive={isProfessionalActive} />
                         </div>
                     ) : (
-                        <Link href="/atheletes/professional" className="group cursor-pointer flex flex-col items-center w-full md:flex-1 max-w-2xl">
-                            <CardContent type="professional" isActive={isProfessionalActive} />
-                        </Link>
+                        isStatic ? (
+                            <div className="flex flex-col items-center w-full md:flex-1 max-w-2xl">
+                                <CardContent type="professional" isActive={isProfessionalActive} />
+                            </div>
+                        ) : (
+                            <Link href="/atheletes?type=professional" className="group cursor-pointer flex flex-col items-center w-full md:flex-1 max-w-2xl">
+                                <CardContent type="professional" isActive={isProfessionalActive} />
+                            </Link>
+                        )
                     )}
 
                     {/* Recreational */}
-                    {isStatic ? (
-                        <div className="flex flex-col items-center w-full md:flex-1 max-w-2xl mt-12 md:mt-0 pointer-events-none">
+                    {onTypeSelect ? (
+                        <div onClick={() => onTypeSelect('recreational')} className="group cursor-pointer flex flex-col items-center w-full md:flex-1 max-w-2xl mt-12 md:mt-0">
                             <CardContent type="recreational" isActive={isRecreationalActive} />
                         </div>
                     ) : (
-                        <Link href="/atheletes/recreational" className="group cursor-pointer flex flex-col items-center w-full md:flex-1 max-w-2xl mt-12 md:mt-0">
-                            <CardContent type="recreational" isActive={isRecreationalActive} />
-                        </Link>
+                        isStatic ? (
+                            <div className="flex flex-col items-center w-full md:flex-1 max-w-2xl mt-12 md:mt-0 pointer-events-none">
+                                <CardContent type="recreational" isActive={isRecreationalActive} />
+                            </div>
+                        ) : (
+                            <Link href="/atheletes?type=recreational" className="group cursor-pointer flex flex-col items-center w-full md:flex-1 max-w-2xl mt-12 md:mt-0">
+                                <CardContent type="recreational" isActive={isRecreationalActive} />
+                            </Link>
+                        )
                     )}
 
                 </div>

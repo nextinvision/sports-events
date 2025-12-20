@@ -10,7 +10,7 @@ const testimonials = [
         name: "Sarah Johnson",
         role: "Professional Tennis Player",
         image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop",
-        text: "The platform completely revolutionized how I manage my tournaments. The interface is intuitive and the support team is incredible. I've never felt more connected to my fans and organizers.",
+        text: "The platform completely revolutionized how I manage my tournaments. The interface is intuitive, efficient, and the support team is incredible. I've never felt more connected to my fans and organizers, allowing me to focus entirely on my game performance without worrying about logistics.",
         rating: 5
     },
     {
@@ -18,7 +18,7 @@ const testimonials = [
         name: "Michael Chen",
         role: "Event Organizer",
         image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
-        text: "Managing large-scale sports events used to be a nightmare. With this tool, everything from ticketing to participant management is seamless. It's a game-changer for our organization.",
+        text: "Managing large-scale sports events used to be a scheduling nightmare filled with conflicts and miscommunications. With this tool, everything from ticketing to participant management is seamless and automated. It's truly a game-changer for our organization's growth and operational happiness.",
         rating: 5
     },
     {
@@ -26,7 +26,7 @@ const testimonials = [
         name: "Emily Davis",
         role: "Basketball Coach",
         image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&auto=format&fit=crop",
-        text: "I can easily track my team's progress and find local tournaments. The community aspect is wonderful, helping us connect with other teams for friendly matches.",
+        text: "I can easily track my team's progress, schedule trainings, and find local tournaments all in one place. The community aspect is wonderful, helping us connect with other teams for friendly matches and fostering a spirit of healthy competition that keeps my players motivated week after week.",
         rating: 4
     },
     {
@@ -34,7 +34,7 @@ const testimonials = [
         name: "David Wilson",
         role: "Sports Enthusiast",
         image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop",
-        text: "Finding recreational games in my area was always hit or miss. Now I have a reliable way to stay active and meet new people who share my passion for sports.",
+        text: "Finding recreational games in my area was always hit or miss, often leading to cancelled plans. Now I have a reliable way to stay active and meet new people who share my passion for sports. This platform has genuinely improved my weekly routine and social circle.",
         rating: 5
     }
 ]
@@ -63,16 +63,16 @@ export default function TestimonialSection() {
                 <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
 
                     {/* Left Side: Content */}
-                    <div className="w-full lg:w-1/2 flex flex-col items-start z-20">
-                        <div className="flex items-center gap-4 mb-8">
-                            <h2 className="text-4xl md:text-5xl font-light">Testimonials</h2>
+                    <div className="w-full lg:w-3/5 flex flex-col items-start z-20">
+                        <div className="flex items-center gap-4 mb-20">
+                            <h2 className="text-2xl sm:text-4xl font-light">Testimonials</h2>
                             <div className="h-[2px] w-16 bg-[#D4AF37]"></div>
                         </div>
 
                         <div className="min-h-[300px] transition-all duration-500 ease-in-out">
                             <Quote className="w-12 h-12 text-[#D4AF37] mb-6 opacity-50" />
 
-                            <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-8 italic animate-in fade-in slide-in-from-bottom-2 duration-500" key={activeDataIndex}>
+                            <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6 italic animate-in fade-in slide-in-from-bottom-2 duration-500" key={activeDataIndex}>
                                 "{activeTestimonial.text}"
                             </p>
 
@@ -94,7 +94,7 @@ export default function TestimonialSection() {
                     </div>
 
                     {/* Right Side: Visuals */}
-                    <div className="hidden lg:flex w-full lg:w-1/2 relative h-[600px] items-center justify-end overflow-visible">
+                    <div className="hidden lg:flex w-full lg:w-2/5 relative h-[600px] items-center justify-end overflow-visible">
                         {/* Orbiting Images Container - Positioned to the right */}
                         <div className="relative w-[800px] h-[800px] flex-shrink-0 aspect-square translate-x-1/2">
 
