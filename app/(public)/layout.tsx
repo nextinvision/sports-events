@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "../globals.css";
 import Header from "@/components/shared/Header";
 import Footer from "@/components/shared/Footer";
-import ContactSection from "@/components/shared/ContactSection";
 import Toaster from "@/components/ui/Toaster";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -26,9 +25,6 @@ export default function RootLayout({
         <main className="flex-grow">
           {children}
         </main>
-        <div>
-          <ContactSection />
-        </div>
         <Footer />
         <Toaster />
       </body>

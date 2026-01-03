@@ -18,17 +18,17 @@ interface TrendingTournamentsCarouselProps {
 export default function BasicCarousel({ items }: TrendingTournamentsCarouselProps) {
   const defaultTournaments = [
     {
-      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=1000&auto=format&fit=crop",
+      src: "https://images.unsplash.com/photo-1624880357913-a8539238245b?q=80&w=1000&auto=format&fit=crop",
       name: "Champions League Final 2024",
       link: "/experiences/football/champions-league"
     },
     {
-      src: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1000&auto=format&fit=crop",
+      src: "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1000&auto=format&fit=crop",
       name: "Wimbledon Championship",
       link: "/experiences/tennis/wimbledon"
     },
     {
-      src: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?q=80&w=1000&auto=format&fit=crop",
+      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=1000&auto=format&fit=crop",
       name: "Qatar World Cup",
       link: "/experiences/football/world-cup"
     },

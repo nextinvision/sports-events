@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { gsap } from "gsap";
 import AnimatedContent from "@/components/home/AnimatedContent";
 import ProfessionalEvents from "@/components/athlete/ProfessionalEvents";
+import EnquiryCTA from "@/components/shared/EnquiryCTA";
 
 /* ===================== DATA ===================== */
 
@@ -191,6 +192,13 @@ export default function ExperiencesPage() {
 
                 <ProfessionalEvents />
             </section>
+
+            <EnquiryCTA
+                title="Ready for the experience of a lifetime?"
+                description="Book your premium sports travel package today."
+                link="/enquiry/experiences"
+                buttonLabel="Enquire Now"
+            />
         </main>
     );
 }

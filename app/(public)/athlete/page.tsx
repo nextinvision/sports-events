@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation'
 import AthleteSelection from '@/components/home/AthleteSelection'
 import RecreationalEvents from '@/components/athlete/RecreationalEvents'
 import ProfessionalEvents from '@/components/athlete/ProfessionalEvents'
+import EnquiryCTA from '@/components/shared/EnquiryCTA'
 
 function AtheletesContent() {
     const searchParams = useSearchParams()
@@ -36,7 +37,7 @@ function AtheletesContent() {
 
             <div
                 ref={contentRef}
-                className="mb-0 md:mb-56 mt-24 md:mt-12 relative z-0 pointer-events-auto scroll-mt-32"
+                className="mb-0 mt-24 md:mt-12 relative z-0 pointer-events-auto scroll-mt-32"
             >
                 {activeTab === 'professional' ? (
                     <ProfessionalEvents />
@@ -44,6 +45,13 @@ function AtheletesContent() {
                     <RecreationalEvents />
                 )}
             </div>
+
+            <EnquiryCTA
+                title={activeTab === 'professional' ? "Elite logistics for elite performance." : "Train like a pro, play like a legend."}
+                description={activeTab === 'professional' ? "Focus on the game. We handle the travel, accommodation, and improved logistics." : "Exclusive training camps and recreational tournaments tailored for you."}
+                link={activeTab === 'professional' ? "/enquiry/athlete-professional" : "/enquiry/athlete-recreational"}
+                buttonLabel="Enquire Now"
+            />
         </div>
     )
 }
