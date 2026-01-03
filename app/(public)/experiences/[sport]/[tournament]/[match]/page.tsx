@@ -1,6 +1,5 @@
 import { Calendar, MapPin } from 'lucide-react'
 import Itinerary from '@/components/athlete/Itinerary'
-import ExperienceEnquiryForm from '@/components/experiences/ExperienceEnquiryForm'
 
 // Mock data generator for the match
 const getMatchData = (sport: string, tournament: string, matchId: string) => {
@@ -187,8 +186,6 @@ export default async function MatchPage({ params }: { params: Promise<{ sport: s
                 <Itinerary items={data.itinerary} />
             </div>
 
-            {/* Experience Enquiry Form */}
-            <ExperienceEnquiryForm />
 
         </div>
     )

@@ -45,21 +45,14 @@ export default function Hero() {
             <div className="w-full relative z-20 flex h-full flex-col justify-center items-end max-[375px]:items-center px-6 min-[425px]:px-12 md:px-12 text-white">
                 <div className="w-auto text-left max-[375px]:text-center flex flex-col gap-1 translate-y-16">
                     <BlurText
-                        text="YOUR NEXT"
+                        text="YOU NAME IT,"
                         delay={300}
                         animateBy="words"
                         direction="top"
                         className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-light leading-tight tracking-wide"
                     />
                     <BlurText
-                        text="SPORTS"
-                        delay={300}
-                        animateBy="words"
-                        direction="top"
-                        className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-light leading-tight tracking-wide"
-                    />
-                    <BlurText
-                        text="ADVENTURE"
+                        text="WE MAKE IT."
                         delay={300}
                         animateBy="words"
                         direction="top"
@@ -67,14 +60,14 @@ export default function Hero() {
                         childClassName="bg-gradient-to-r from-[#FDB931] via-[#FFFFAC] to-[#D4AF37] bg-clip-text text-transparent"
                     />
                     <BlurText
-                        text="STARTS"
+                        text="YOUR SPORTS"
                         delay={300}
                         animateBy="words"
                         direction="top"
                         className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-light leading-tight tracking-wide"
                     />
                     <BlurText
-                        text="HERE"
+                        text="TOURISM PARTNER"
                         delay={150}
                         animateBy="words"
                         direction="top"

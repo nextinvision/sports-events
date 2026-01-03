@@ -58,7 +58,7 @@ export default function Header() {
 
           <div className="flex items-center justify-end gap-6 flex-1">
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-8">
               {/* Experiences Dropdown */}
               <div className="group relative h-full flex items-center">
                 <Link
@@ -74,28 +74,40 @@ export default function Header() {
                     <Link href="/experiences/football" className="px-4 py-2 text-sm text-gray-300 hover:text-[#D4AF37] hover:bg-white/5 transition-colors">
                       Football
                     </Link>
-                    <Link href="/experiences/cricket" className="px-4 py-2 text-sm text-gray-300 hover:text-[#D4AF37] hover:bg-white/5 transition-colors">
-                      Cricket
-                    </Link>
                     <Link href="/experiences/tennis" className="px-4 py-2 text-sm text-gray-300 hover:text-[#D4AF37] hover:bg-white/5 transition-colors">
                       Tennis
                     </Link>
-                    <Link href="/experiences/basketball" className="px-4 py-2 text-sm text-gray-300 hover:text-[#D4AF37] hover:bg-white/5 transition-colors">
-                      Basketball
+                    <Link href="/experiences/f1" className="px-4 py-2 text-sm text-gray-300 hover:text-[#D4AF37] hover:bg-white/5 transition-colors">
+                      F1/Motorsport
                     </Link>
-                    <Link href="/experiences/rugby" className="px-4 py-2 text-sm text-gray-300 hover:text-[#D4AF37] hover:bg-white/5 transition-colors">
-                      Rugby
+                    <Link href="/experiences/cricket" className="px-4 py-2 text-sm text-gray-300 hover:text-[#D4AF37] hover:bg-white/5 transition-colors">
+                      Cricket
                     </Link>
                   </div>
                 </div>
               </div>
               {/* Athlete Link - No Dropdown */}
-              <Link
-                href="/athlete"
-                className="text-white hover:text-white/80 font-normal text-sm transition-colors"
-              >
-                Athlete
-              </Link>
+              {/* Athlete Dropdown */}
+              <div className="group relative h-full flex items-center">
+                <Link
+                  href="/athlete"
+                  className="text-white hover:text-white/80 font-normal text-sm transition-colors py-4 inline-block"
+                >
+                  Athlete
+                </Link>
+
+                {/* Dropdown Menu */}
+                <div className="absolute top-full left-0 pt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left z-50">
+                  <div className="bg-black/95 backdrop-blur-md border border-white/10 rounded-lg shadow-xl overflow-hidden flex flex-col py-2">
+                    <Link href="/athlete?type=professional" className="px-4 py-2 text-sm text-gray-300 hover:text-[#D4AF37] hover:bg-white/5 transition-colors">
+                      Professional
+                    </Link>
+                    <Link href="/athlete?type=recreational" className="px-4 py-2 text-sm text-gray-300 hover:text-[#D4AF37] hover:bg-white/5 transition-colors">
+                      Recreational
+                    </Link>
+                  </div>
+                </div>
+              </div>
               <Link
                 href="/events"
                 className="text-white hover:text-white/80 font-normal text-sm transition-colors"
@@ -107,6 +119,12 @@ export default function Header() {
                 className="text-white hover:text-white/80 font-normal text-sm transition-colors"
               >
                 News & blogs
+              </Link>
+              <Link
+                href="/enquiry/home"
+                className="text-white hover:text-white/80 font-normal text-sm transition-colors"
+              >
+                Enquire Now
               </Link>
 
               {/* Sign Up Button & Dropdown Container */}
@@ -121,7 +139,7 @@ export default function Header() {
             {/* Mobile Menu Button */}
             <button
               className={cn(
-                "md:hidden",
+                "lg:hidden",
                 "text-white"
               )}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -141,7 +159,7 @@ export default function Header() {
       {/* Mobile Menu */}
       {
         mobileMenuOpen && (
-          <div className="md:hidden w-full border-t border-white/10 bg-black/80 backdrop-blur-xl h-[calc(100vh-5rem)] overflow-y-auto">
+          <div className="lg:hidden w-full border-t border-white/10 bg-black/80 backdrop-blur-xl h-[calc(100vh-5rem)] overflow-y-auto">
             <div className="container mx-auto px-4 py-4">
               <nav className="flex flex-col space-y-6 mt-4">
                 <Link
@@ -168,13 +186,6 @@ export default function Header() {
                       Football
                     </Link>
                     <Link
-                      href="/experiences/cricket"
-                      className="text-sm text-gray-300 hover:text-[#D4AF37]"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Cricket
-                    </Link>
-                    <Link
                       href="/experiences/tennis"
                       className="text-sm text-gray-300 hover:text-[#D4AF37]"
                       onClick={() => setMobileMenuOpen(false)}
@@ -182,28 +193,46 @@ export default function Header() {
                       Tennis
                     </Link>
                     <Link
-                      href="/experiences/basketball"
+                      href="/experiences/f1"
                       className="text-sm text-gray-300 hover:text-[#D4AF37]"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      Basketball
+                      F1/Motorsport
                     </Link>
                     <Link
-                      href="/experiences/rugby"
+                      href="/experiences/cricket"
                       className="text-sm text-gray-300 hover:text-[#D4AF37]"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      Rugby
+                      Cricket
                     </Link>
                   </div>
                 </div>
-                <Link
-                  href="/athlete"
-                  className="text-lg font-semibold text-white"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Athlete
-                </Link>
+                <div className="flex flex-col gap-4">
+                  <Link
+                    href="/athlete"
+                    className="text-lg font-semibold text-white"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Athlete
+                  </Link>
+                  <div className="flex flex-col pl-4 gap-3 border-l border-white/20 ml-2">
+                    <Link
+                      href="/athlete?type=professional"
+                      className="text-sm text-gray-300 hover:text-[#D4AF37]"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Professional
+                    </Link>
+                    <Link
+                      href="/athlete?type=recreational"
+                      className="text-sm text-gray-300 hover:text-[#D4AF37]"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Recreational
+                    </Link>
+                  </div>
+                </div>
                 <Link
                   href="/events"
                   className="text-lg font-semibold text-white"
@@ -218,6 +247,14 @@ export default function Header() {
                 >
                   News
                 </Link>
+                <Link
+                  href="/enquiry/home"
+                  className="text-lg font-semibold text-white"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Enquire Now
+                </Link>
+
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false)

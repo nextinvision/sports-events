@@ -88,7 +88,6 @@ export default async function RecreationalEventPage({ params }: { params: Promis
                 </div>
             )}
 
-            {/* Contact Section (handled by footer/layout, but adding spacer if needed) */}
             <div className="h-20"></div>
         </main>
     )

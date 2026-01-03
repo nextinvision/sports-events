@@ -8,8 +8,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import Image from "next/image"
-import PartnershipForm from "@/components/events/PartnershipForm"
 import AnimatedContent from "@/components/home/AnimatedContent"
+import EnquiryCTA from "@/components/shared/EnquiryCTA"
 
 export default function EventsPage() {
     const [showHowWeWork, setShowHowWeWork] = React.useState(false)
@@ -183,26 +183,13 @@ export default function EventsPage() {
                 </div>
             </section>
 
-            {/* Partnership Form */}
-            <section className="py-20 bg-black pb-32">
-                <div className="container mx-auto px-6 md:px-24">
-                    <AnimatedContent distance={100} direction="vertical" animateOpacity duration={0.8}>
-                        <h2 className="text-2xl md:text-4xl font-normal mb-12 text-white flex items-center gap-6">
-                            Partnership form
-                            <div className="h-[3px] w-12 md:h-[4px] md:w-20 bg-yellow-600 mt-2" />
-                        </h2>
-                    </AnimatedContent>
+            <EnquiryCTA
+                title="Let's build something great."
+                description="Partner with us to organize seamless and memorable sporting events."
+                link="/enquiry/organisers"
+                buttonLabel="Enquire Now"
+            />
 
-                    <div className="max-w-4xl">
-                        <AnimatedContent distance={100} direction="vertical" animateOpacity duration={0.8} delay={0.1}>
-                            <h3 className="text-xl md:text-2xl font-normal text-white mb-2">The event you envision. The execution we deliver.</h3>
-                            <p className="text-neutral-400 mb-12 font-normal text-sm md:text-base">Tell us the vision. We handle the logistics, tech, safety, and operations manuals that make it real. Smooth, scalable, sweat-proof.</p>
-                        </AnimatedContent>
-
-                        <PartnershipForm />
-                    </div>
-                </div>
-            </section>
         </div>
     )
 }
