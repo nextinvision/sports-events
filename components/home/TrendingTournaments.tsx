@@ -141,6 +141,8 @@ export const TrendingTournamentsCarousel = ({ items }: { items?: Tournament[] })
 export default function TrendingTournaments() {
     return (
         <section className="py-16 text-foreground relative">
+            {/* Top fade to blend with Hero section */}
+            <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent pointer-events-none z-10" />
             <div className="container mx-auto px-4 min-[425px]:px-12 relative z-20">
                 <AnimatedContent
                     distance={100}

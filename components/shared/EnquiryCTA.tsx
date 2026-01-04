@@ -13,7 +13,7 @@ interface EnquiryCTAProps {
 
 export default function EnquiryCTA({ title, description, link, buttonLabel }: EnquiryCTAProps) {
     return (
-        <section className="bg-black py-20 border-t border-white/10">
+        <section className="py-20 border-t border-white/10" style={{ backgroundColor: 'rgba(10, 10, 10, 0.85)' }}>
             <div className="container mx-auto px-6 md:px-12">
                 <AnimatedContent distance={50} direction="vertical" animateOpacity duration={0.6}>
                     <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 max-w-6xl mx-auto">

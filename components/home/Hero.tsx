@@ -41,7 +41,8 @@ export default function Hero() {
                     priority
                 />
             </motion.div>
-            <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-background via-background/60 to-transparent z-10" />
+            {/* Extended smooth fade at bottom to blend with next section */}
+            <div className="absolute bottom-0 left-0 w-full h-96 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 via-[#0a0a0a]/40 to-transparent z-10" />
             <div className="w-full relative z-20 flex h-full flex-col justify-center items-end max-[375px]:items-center px-6 min-[425px]:px-12 md:px-12 text-white">
                 <div className="w-auto text-left max-[375px]:text-center flex flex-col gap-1 translate-y-16">
                     <BlurText
