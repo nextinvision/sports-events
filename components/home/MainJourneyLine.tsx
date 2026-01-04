@@ -122,7 +122,7 @@ export default function MainJourneyLine() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     filter="url(#main-glow-outer)"
-                    opacity="0.2"
+                    opacity="0.1"
                 />
                 
                 {/* Main creative organic curve path - flows naturally from hero bottom to footer */}
