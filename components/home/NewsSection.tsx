@@ -109,7 +109,7 @@ export default function NewsSection() {
     const currentData = newsPages[currentIndex]
 
     return (
-        <section className="py-8 bg-black w-full relative z-20">
+        <section className="py-8 w-full relative z-20" style={{ backgroundColor: 'rgba(10, 10, 10, 0.85)' }}>
             <div className="container mx-auto px-4 min-[425px]:px-12">
                 <AnimatedContent
                     distance={100}
