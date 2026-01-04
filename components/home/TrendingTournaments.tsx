@@ -1,6 +1,7 @@
 "use client"
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Carousel } from "@ark-ui/react/carousel"
 import { ArrowRight } from "lucide-react"
 import AnimatedContent from './AnimatedContent'
@@ -81,41 +82,42 @@ export const TrendingTournamentsCarousel = ({ items }: { items?: Tournament[] })
         >
             <Carousel.Root
                 page={currentIndex}
-                onPageChange={(d: any) => setCurrentIndex(d.page)}
+                onPageChange={(d: { page: number }) => setCurrentIndex(d.page)}
                 slideCount={tournaments.length}
                 loop
                 className="w-full"
             >
-                <Carousel.ItemGroup className="overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent),linear-gradient(to_right,transparent,black_5%,black_95%,transparent)] [mask-composite:intersect] [-webkit-mask-composite:source-in]">
+                <Carousel.ItemGroup className="overflow-hidden">
                     {tournaments.map((tournament, index) => (
                         <Carousel.Item key={index} index={index}>
-                            <div className="block relative w-full h-[350px] sm:h-[450px] lg:h-[500px] group cursor-default">
-                                <img
+                            <div className="block relative w-full h-screen group cursor-default">
+                                <Image
                                     src={tournament.src}
                                     alt={tournament.name}
-                                    className="w-full h-full object-cover"
+                                    fill
+                                    className="object-cover"
                                 />
 
                                 {/* Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-6 md:p-10">
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-6 md:p-10 lg:p-12">
                                     <div className="space-y-4 max-w-4xl">
 
-                                        <h3 className="text-white text-xl md:text-3xl font-bold uppercase tracking-tight">
+                                        <h3 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-tight">
                                             {tournament.name}
                                         </h3>
 
-                                        <div className="flex flex-wrap items-center gap-2 md:gap-4 text-xs md:text-sm text-gray-200">
+                                        <div className="flex flex-wrap items-center gap-2 md:gap-4 text-sm md:text-base text-gray-200">
                                             <span className="text-[#D4AF37] font-semibold">{tournament.dateRange}</span>
                                             <span className="hidden sm:inline w-1.5 h-1.5 rounded-full bg-gray-500"></span>
                                             <span>{tournament.location}</span>
                                         </div>
 
-                                        <p className="text-sm md:text-base text-gray-300 italic border-l-4 border-[#D4AF37] pl-4 py-1">
+                                        <p className="text-base md:text-lg lg:text-xl text-gray-300 italic border-l-4 border-[#D4AF37] pl-4 py-1">
                                             {tournament.tagline}
                                         </p>
 
-                                        <Link href={tournament.link} className="inline-flex items-center gap-2 bg-[#D4AF37] text-black text-xs font-bold px-6 py-2 rounded-none uppercase tracking-wider hover:bg-white transition-all duration-300 mt-4 cursor-pointer w-fit">
-                                            Know More <ArrowRight size={14} />
+                                        <Link href={tournament.link} className="inline-flex items-center gap-2 bg-[#D4AF37] text-black text-sm md:text-base font-bold px-6 md:px-8 py-2.5 md:py-3 rounded-none uppercase tracking-wider hover:bg-white transition-all duration-300 mt-4 cursor-pointer w-fit">
+                                            Know More <ArrowRight size={16} />
                                         </Link>
                                     </div>
                                 </div>
@@ -124,7 +126,7 @@ export const TrendingTournamentsCarousel = ({ items }: { items?: Tournament[] })
                     ))}
                 </Carousel.ItemGroup>
 
-                <Carousel.IndicatorGroup className="flex justify-center gap-3 mt-6">
+                <Carousel.IndicatorGroup className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex justify-center gap-3">
                     {tournaments.map((_, i) => (
                         <Carousel.Indicator
                             key={i}
@@ -140,25 +142,36 @@ export const TrendingTournamentsCarousel = ({ items }: { items?: Tournament[] })
 
 export default function TrendingTournaments() {
     return (
-        <section className="py-16 text-foreground relative">
+        <section className="relative h-screen w-full overflow-hidden text-foreground">
             {/* Top fade to blend with Hero section */}
             <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent pointer-events-none z-10" />
-            <div className="container mx-auto px-4 min-[425px]:px-12 relative z-20">
-                <AnimatedContent
-                    distance={100}
-                    direction="vertical"
-                    duration={1}
-                    ease="power3.out"
-                    delay={0.1}
-                >
-                    <div className="mb-8">
-                        <h2 className="text-xl sm:text-3xl lg:text-4xl font-normal text-left mb-2">
-                            TOP UPCOMING <span className="text-[#D4AF37] font-normal">EXPERIENCES</span>
-                            <span className="inline-block h-[2px] sm:h-[4px] w-16 sm:w-24 bg-[#D4AF37] ml-3 sm:ml-4 align-middle"></span>
-                        </h2>
-                        <p className="text-gray-400 text-sm sm:text-lg italic">The match you dream of. The trip you deserve.</p>
-                    </div>
-                </AnimatedContent>
+            
+            {/* Bottom fade to blend with next section */}
+            <div className="absolute bottom-0 left-0 w-full h-96 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 via-[#0a0a0a]/40 to-transparent pointer-events-none z-10" />
+            
+            {/* Section Title - Positioned absolutely at top */}
+            <div className="absolute top-8 left-0 w-full z-20 pointer-events-none">
+                <div className="container mx-auto px-4 min-[425px]:px-12 md:px-12">
+                    <AnimatedContent
+                        distance={100}
+                        direction="vertical"
+                        duration={1}
+                        ease="power3.out"
+                        delay={0.1}
+                    >
+                        <div>
+                            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal text-left mb-2 text-white">
+                                TOP UPCOMING <span className="text-[#D4AF37] font-normal">EXPERIENCES</span>
+                                <span className="inline-block h-[2px] sm:h-[4px] w-16 sm:w-24 bg-[#D4AF37] ml-3 sm:ml-4 align-middle"></span>
+                            </h2>
+                            <p className="text-gray-300 text-sm sm:text-base md:text-lg italic">The match you dream of. The trip you deserve.</p>
+                        </div>
+                    </AnimatedContent>
+                </div>
+            </div>
+
+            {/* Full-screen Carousel */}
+            <div className="absolute inset-0 z-0">
                 <AnimatedContent
                     distance={100}
                     direction="vertical"
@@ -166,9 +179,7 @@ export default function TrendingTournaments() {
                     ease="power3.out"
                     delay={0.3}
                 >
-                    <div className="w-full">
-                        <TrendingTournamentsCarousel />
-                    </div>
+                    <TrendingTournamentsCarousel />
                 </AnimatedContent>
             </div>
         </section>
