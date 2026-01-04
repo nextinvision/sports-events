@@ -86,7 +86,7 @@ export const TrendingTournamentsCarousel = ({ items }: { items?: Tournament[] })
                 loop
                 className="w-full"
             >
-                <Carousel.ItemGroup className="overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent),linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [mask-composite:intersect] [-webkit-mask-composite:source-in]">
+                <Carousel.ItemGroup className="overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent),linear-gradient(to_right,transparent,black_5%,black_95%,transparent)] [mask-composite:intersect] [-webkit-mask-composite:source-in]">
                     {tournaments.map((tournament, index) => (
                         <Carousel.Item key={index} index={index}>
                             <div className="block relative w-full h-[350px] sm:h-[450px] lg:h-[500px] group cursor-default">
